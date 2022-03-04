@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { TodoService } from './todo.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  ToDos: any[] = [];
+  toDos: any[] = [];
   markAsDone: boolean = true;
+
+  constructor(private todoService: TodoService) {
+
+  }
+
+  ngOnInit() {
+    this.getToDos();
+  }
+
+  getToDos() {
+    this.todoService.getTodos()
+      .subscribe(res => {
+        this.toDos = res;
+      })
+  }
 
   toggleCompletion(todo: any) {
     this.markAsDone = !this.markAsDone
