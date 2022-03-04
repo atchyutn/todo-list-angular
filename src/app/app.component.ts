@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-list-angular';
+  ToDos: any[] = [];
+  markAsDone: boolean = true;
+
+  toggleCompletion(todo: any) {
+    this.markAsDone = !this.markAsDone
+  }
+
+  editTodo(todo: any) {
+
+  }
+
+  deleteTodo(todo: any) {
+
+  }
 }
