@@ -7,18 +7,18 @@
   </nav>
 
   <div class="mt-3">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" [ngClass]="{'strike-text' : markAsDone}">
-        An item
+    <ul class="list-group list-group-flush" *ngFor="let todo of toDos">
+      <li class="list-group-item" [ngClass]="{'strike-text' : todo.completed}">
+        {{todo.title}}
         <span class="buttons">
            <button type="button" class="btn btn-sm btn-primary mx-3"
             (click)="editTodo('todo')">
             Edit
           </button>
           <button type="button" class="btn btn-sm mx-3"
-            [ngClass]="markAsDone ? 'btn-warning' : 'btn-success'"
+            [ngClass]="todo.completed ? 'btn-warning' : 'btn-success'"
             (click)="toggleCompletion('todo')">
-              {{markAsDone ? "Not Done Yet" : "Mark as Done" }}
+              {{todo.completed ? "Not Done Yet" : "Mark as Done" }}
             </button>
           <button type="button" class="btn btn-sm btn-danger mx-3"
             (click)="deleteTodo('todo')">
@@ -26,7 +26,6 @@
           </button>
         </span>
       </li>
-      <li class="list-group-item">A second item</li>
     </ul>
   </div>
 </div>
